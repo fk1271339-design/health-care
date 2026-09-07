@@ -1669,11 +1669,6 @@
 
   <!-- FLOATING ACTIONS DOCK -->
   <div id="floatingDock" style="position:fixed; bottom:24px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:10px; align-items:flex-end;">
-    <button onclick="toggleAiChatWindow()" id="aiChatFab" style="display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:99px; background:linear-gradient(135deg,#0ea5e9,#0284c7); color:#fff; border:1px solid rgba(255,255,255,0.3); font-family:inherit; font-size:0.82rem; font-weight:700; cursor:pointer; box-shadow:0 8px 24px rgba(14,165,233,0.55); transition:all 0.3s ease; position:relative;">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      <span style="white-space:nowrap; color:#fff; font-weight:700;">AI Health</span>
-      <span id="aiPingDot" style="width:8px; height:8px; border-radius:50%; background:#34c759; display:inline-block; animation:aiPing 1.8s infinite;"></span>
-    </button>
     <a href="tel:+911149827000" style="display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:99px; background:linear-gradient(135deg,#ef4444,#dc2626); color:#fff; border:1px solid rgba(255,255,255,0.3); font-family:inherit; font-size:0.82rem; font-weight:700; text-decoration:none; box-shadow:0 8px 24px rgba(239,68,68,0.55); transition:all 0.3s ease;">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       <span style="white-space:nowrap; color:#fff; font-weight:700;">24/7 Call</span>
@@ -1682,6 +1677,11 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
       <span style="white-space:nowrap; color:#fff; font-weight:700;">WhatsApp</span>
     </a>
+    <button onclick="toggleAiChatWindow()" id="aiChatFab" style="width:52px; height:52px; border-radius:50%; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:0; background:linear-gradient(135deg,#0ea5e9,#0284c7); color:#fff; border:1px solid rgba(255,255,255,0.3); font-family:inherit; cursor:pointer; box-shadow:0 8px 24px rgba(14,165,233,0.55); transition:all 0.3s ease; position:relative;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span style="font-size:0.65rem; font-weight:800; color:#fff; line-height:1; letter-spacing:0.5px;">AI</span>
+      <span id="aiPingDot" style="position:absolute; top:2px; right:2px; width:9px; height:9px; border-radius:50%; background:#34c759; border:1.5px solid #0ea5e9; display:inline-block;"></span>
+    </button>
   </div>
 
   <script>
