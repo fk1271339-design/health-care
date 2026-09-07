@@ -241,6 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------
      2. NAVBAR SCROLL EFFECT & MOBILE MENU TOGGLE
      ------------------------------------------------------------ */
+  /* ------------------------------------------------------------
+     2. NAVBAR SCROLL EFFECT & MOBILE MENU TOGGLE WITH SMOOTH NAV
+     ------------------------------------------------------------ */
   const siteHeader = document.getElementById('siteHeader');
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -253,20 +256,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  function closeMobileMenu() {
+    if (hamburgerBtn && mobileMenu) {
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  }
+
   if (hamburgerBtn && mobileMenu) {
-    hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
       hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
       mobileMenu.classList.toggle('is-open');
+      if (mobileMenu.classList.contains('is-open')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     });
 
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        mobileMenu.classList.remove('is-open');
+    // Close menu when clicking any mobile link
+    document.querySelectorAll('.mobile-menu a, .mobile-nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        closeMobileMenu();
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          } else if (targetId === '#home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }
       });
     });
+
+    // Mobile Action Buttons inside menu
+    const mobileDoctorPortalBtn = document.getElementById('mobileDoctorPortalBtn');
+    const mobilePortalBtn = document.getElementById('mobilePortalBtn');
+    const mobileTrackBtn = document.getElementById('mobileTrackBtn');
+
+    if (mobileDoctorPortalBtn) {
+      mobileDoctorPortalBtn.addEventListener('click', () => {
+        closeMobileMenu();
+        if (typeof openDoctorPortalHandler === 'function') openDoctorPortalHandler();
+      });
+    }
+    if (mobilePortalBtn) {
+      mobilePortalBtn.addEventListener('click', () => {
+        closeMobileMenu();
+        if (typeof openPortalHandler === 'function') openPortalHandler();
+      });
+    }
+    if (mobileTrackBtn) {
+      mobileTrackBtn.addEventListener('click', () => {
+        closeMobileMenu();
+        if (typeof openTrackModalHandler === 'function') openTrackModalHandler();
+      });
+    }
   }
+
+  // Brand Logo Click -> Smooth Scroll to Home
+  document.querySelectorAll('.brand').forEach(brandEl => {
+    brandEl.addEventListener('click', (e) => {
+      closeMobileMenu();
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
 
   /* ------------------------------------------------------------
      3. SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)

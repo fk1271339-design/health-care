@@ -459,6 +459,301 @@ section {
   text-align: center;
 }
 
+/* DOCTOR PORTAL MODAL STYLES */
+.doctor-portal-modal-content {
+  max-width: 900px;
+  padding: 32px 36px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(90, 184, 152, 0.15);
+}
+
+.doc-login-card {
+  max-width: 440px;
+  margin: 0 auto;
+  text-align: center;
+}
+.doc-login-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(90, 184, 152, 0.12);
+  border: 1px solid rgba(90, 184, 152, 0.25);
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.doc-login-card h3 {
+  font-size: 1.4rem;
+  color: var(--ivory);
+}
+.doc-login-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 6px;
+}
+.doc-auth-error {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(232, 90, 111, 0.12);
+  border: 1px solid var(--danger);
+  color: #ff7b90;
+  font-size: 0.82rem;
+  text-align: left;
+}
+.doc-login-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input-with-icon svg {
+  position: absolute;
+  left: 12px;
+  color: var(--muted);
+  pointer-events: none;
+}
+.input-with-icon input {
+  width: 100%;
+  padding-left: 38px !important;
+}
+.doc-submit-btn {
+  margin-top: 8px;
+}
+.doc-demo-credentials {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+.demo-cred-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.demo-cred-info code {
+  color: var(--teal);
+  background: rgba(90, 184, 152, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Authorized Doctor Dashboard View */
+.doc-portal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.doc-portal-title h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+}
+.doc-portal-badge {
+  font-size: 0.75rem;
+  color: var(--teal);
+  background: rgba(90, 184, 152, 0.12);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(90, 184, 152, 0.2);
+}
+.doc-session-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.doc-user-pill {
+  font-size: 0.82rem;
+  color: var(--ivory);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-alt);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+.online-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.doc-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+.doc-stat-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  text-align: center;
+}
+.doc-stat-card .num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ivory);
+}
+.doc-stat-card .lbl {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.doc-stat-card.pending .num { color: var(--warning); }
+.doc-stat-card.confirmed .num { color: var(--success); }
+.doc-stat-card.completed .num { color: var(--teal); }
+
+.doc-filter-bar {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.doc-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.doc-filter-select {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-size: 0.84rem;
+  color: var(--ivory);
+}
+
+.doc-table-wrap {
+  margin-top: 16px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.86rem;
+}
+.doc-table th {
+  background: var(--bg-alt);
+  padding: 12px 14px;
+  color: var(--ivory-dim);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border-strong);
+}
+.doc-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ivory-dim);
+}
+.doc-table tr:last-child td {
+  border-bottom: none;
+}
+.doc-table tr:hover td {
+  background: rgba(90, 184, 152, 0.04);
+}
+
+/* Status Pill Badges */
+.status-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.status-pill.pending {
+  background: rgba(232, 168, 56, 0.15);
+  color: var(--warning);
+  border: 1px solid rgba(232, 168, 56, 0.3);
+}
+.status-pill.confirmed {
+  background: rgba(52, 199, 123, 0.15);
+  color: var(--success);
+  border: 1px solid rgba(52, 199, 123, 0.3);
+}
+.status-pill.completed {
+  background: rgba(90, 184, 152, 0.15);
+  color: var(--teal);
+  border: 1px solid rgba(90, 184, 152, 0.3);
+}
+.status-pill.rejected {
+  background: rgba(232, 90, 111, 0.15);
+  color: var(--danger);
+  border: 1px solid rgba(232, 90, 111, 0.3);
+}
+
+.action-btn-group {
+  display: flex;
+  gap: 6px;
+}
+.action-btn {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.action-btn.accept {
+  background: rgba(52, 199, 123, 0.18);
+  color: var(--success);
+  border-color: rgba(52, 199, 123, 0.35);
+}
+.action-btn.accept:hover {
+  background: var(--success);
+  color: #000;
+}
+.action-btn.reject {
+  background: rgba(232, 90, 111, 0.18);
+  color: var(--danger);
+  border-color: rgba(232, 90, 111, 0.35);
+}
+.action-btn.reject:hover {
+  background: var(--danger);
+  color: #fff;
+}
+.action-btn.complete {
+  background: rgba(90, 184, 152, 0.18);
+  color: var(--teal);
+  border-color: rgba(90, 184, 152, 0.35);
+}
+.action-btn.complete:hover {
+  background: var(--teal);
+  color: #000;
+}
+
 /* Scroll Reveal Animations */
 [data-reveal] {
   opacity: 0;
@@ -4697,6 +4992,43 @@ section {
     margin: 0 !important;
     border-radius: 10px !important;
     object-position: top center !important;
+  }
+
+  /* Doctor Portal Modal Mobile Overrides */
+  .doctor-portal-modal-content {
+    padding: 18px 12px !important;
+    max-width: 96vw !important;
+    border-radius: 14px !important;
+  }
+  .doc-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+  }
+  .doc-stat-card {
+    padding: 10px 8px !important;
+  }
+  .doc-stat-card .num {
+    font-size: 1.2rem !important;
+  }
+  .doc-stat-card .lbl {
+    font-size: 0.68rem !important;
+  }
+  .doc-portal-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  .doc-session-bar {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+  .doc-table th, .doc-table td {
+    padding: 8px 6px !important;
+    font-size: 0.76rem !important;
+  }
+  .action-btn {
+    padding: 3px 6px !important;
+    font-size: 0.68rem !important;
   }
 }
 
