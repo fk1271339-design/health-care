@@ -1775,7 +1775,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
+  /* ------------------------------------------------------------
+     INTERACTIVE BMI CALCULATOR HANDLER
+     ------------------------------------------------------------ */
+  const bmiForm = document.getElementById('bmiForm');
+  if (bmiForm) {
+    bmiForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const height = parseFloat(document.getElementById('bmiHeight').value);
+      const weight = parseFloat(document.getElementById('bmiWeight').value);
+
+      if (!height || !weight || height <= 0 || weight <= 0) return;
+
+      const heightM = height / 100;
+      const bmi = (weight / (heightM * heightM)).toFixed(1);
+      const bmiNumVal = document.getElementById('bmiNumberVal');
+      const statusBadge = document.getElementById('bmiStatusBadge');
+      const barFill = document.getElementById('bmiBarFill');
+      const adviceText = document.getElementById('bmiAdviceText');
+
+      if (bmiNumVal) bmiNumVal.textContent = bmi;
+
+      let category = 'normal';
+      let badgeLabel = 'Normal Weight';
+      let fillWidth = '50%';
+      let message = 'Your BMI is in the healthy range! Keep up balanced nutrition and regular exercise.';
+
+      if (bmi < 18.5) {
+        category = 'underweight';
+        badgeLabel = 'Underweight';
+        fillWidth = '22%';
+        message = 'Your BMI indicates underweight status. We recommend consulting our nutrition & internal medicine team.';
+      } else if (bmi >= 18.5 && bmi <= 24.9) {
+        category = 'normal';
+        badgeLabel = 'Normal Weight';
+        fillWidth = '48%';
+        message = 'Your BMI is in the healthy range! Keep up balanced nutrition and regular cardiovascular exercise.';
+      } else if (bmi >= 25 && bmi <= 29.9) {
+        category = 'overweight';
+        badgeLabel = 'Overweight';
+        fillWidth = '74%';
+        message = 'Your BMI indicates overweight status. Consider scheduling a preventative cardiology & metabolic checkup.';
+      } else {
+        category = 'obese';
+        badgeLabel = 'Obesity Class';
+        fillWidth = '96%';
+        message = 'Your BMI indicates obesity. We strongly recommend a comprehensive internal medicine & cardiac evaluation.';
+      }
+
+      if (statusBadge) {
+        statusBadge.className = `bmi-status-badge ${category}`;
+        statusBadge.textContent = badgeLabel;
+      }
+      if (barFill) barFill.style.width = fillWidth;
+      if (adviceText) adviceText.textContent = message;
+
+      if (window.showToast) {
+        showToast('BMI Calculated', `Your BMI is ${bmi} (${badgeLabel})`, 'success');
+      }
+    });
+  }
+
 });
+
 
 
 
