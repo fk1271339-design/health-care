@@ -754,10 +754,10 @@ section {
   color: #000;
 }
 
-/* Scroll Reveal Animations */
+/* Scroll Reveal Animations — Content visible by default */
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
   transition-delay: var(--delay, 0ms);
 }
