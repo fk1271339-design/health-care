@@ -1766,13 +1766,25 @@ document.addEventListener('DOMContentLoaded', () => {
               observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
         observer.observe(statsSection);
+
+        // Immediate check if element is already in or close to viewport
+        const rect = statsSection.getBoundingClientRect();
+        if (rect.top <= window.innerHeight + 100 && rect.bottom >= -100) {
+          startAllCounters();
+        }
+      } else {
+        startAllCounters();
       }
     } else {
-      // Fallback: animate immediately
       startAllCounters();
     }
+
+    // Safety fallback timer so stat numbers never remain 0
+    setTimeout(() => {
+      startAllCounters();
+    }, 600);
   })();
 
   /* ------------------------------------------------------------

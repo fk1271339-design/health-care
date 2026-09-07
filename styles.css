@@ -5208,61 +5208,92 @@ section {
 }
 
 /* ============================================================
-   24/7 EMERGENCY & WHATSAPP FLOATING WIDGET
+   24/7 EMERGENCY & WHATSAPP FLOATING WIDGET (HIGH CONTRAST & VISIBLE)
    ============================================================ */
 .emergency-float-widget {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 998;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: flex-end;
+  pointer-events: none;
 }
 
-.emergency-btn-float {
-  display: flex;
+.emergency-float-btn {
+  pointer-events: auto;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: #ffffff;
+  gap: 8px;
+  padding: 10px 18px;
   border-radius: 99px;
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.84rem;
-  transition: all 0.3s var(--ease);
-  text-decoration: none;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
 }
 
-.emergency-btn-float:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.6);
-  color: #fff;
-}
-
-.emergency-call-float {
+.emergency-float-btn.phone {
   background: linear-gradient(135deg, #ef4444, #dc2626) !important;
-  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.6), 0 0 12px rgba(239, 68, 68, 0.4) !important;
 }
 
-.emergency-call-float:hover {
-  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.6) !important;
+.emergency-float-btn.phone:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 14px 32px rgba(239, 68, 68, 0.8) !important;
+  color: #ffffff !important;
 }
 
-@media (max-width: 600px) {
+.emergency-float-btn.whatsapp {
+  background: linear-gradient(135deg, #25d366, #128c7e) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.6), 0 0 12px rgba(37, 211, 102, 0.4) !important;
+}
+
+.emergency-float-btn.whatsapp:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 14px 32px rgba(37, 211, 102, 0.8) !important;
+  color: #ffffff !important;
+}
+
+.emergency-float-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke: #ffffff;
+}
+
+.emergency-float-btn.whatsapp svg {
+  fill: #ffffff;
+  stroke: none;
+}
+
+.float-btn-label {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.84rem !important;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
   .emergency-float-widget {
-    bottom: 80px; /* Above bottom FAB button on phone */
+    bottom: 84px; /* Position above bottom mobile FAB button */
     right: 14px;
+    gap: 8px;
   }
-  .emergency-btn-float {
-    padding: 8px 12px;
-    font-size: 0.76rem;
-  }
-  .emergency-btn-float span {
-    display: none; /* Icon-only on phone to keep screen tidy */
+  .emergency-float-btn {
+    padding: 9px 14px;
+    font-size: 0.78rem;
   }
 }
+
 
