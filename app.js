@@ -1848,7 +1848,119 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ------------------------------------------------------------
+     AI CHATBOT WIDGET EVENT HANDLERS
+     ------------------------------------------------------------ */
+  const aiChatFab = document.getElementById('aiChatFab');
+  const aiChatWindow = document.getElementById('aiChatWindow');
+  const aiChatCloseBtn = document.getElementById('aiChatCloseBtn');
+  const aiChatForm = document.getElementById('aiChatForm');
+  const aiChatInput = document.getElementById('aiChatInput');
+  const aiChatMessages = document.getElementById('aiChatMessages');
+  const aiChatChips = document.getElementById('aiChatChips');
+
+  function toggleAiChat() {
+    if (!aiChatWindow) return;
+    const isActive = aiChatWindow.classList.contains('is-active');
+    if (isActive) {
+      aiChatWindow.classList.remove('is-active');
+      aiChatWindow.setAttribute('aria-hidden', 'true');
+    } else {
+      aiChatWindow.classList.add('is-active');
+      aiChatWindow.setAttribute('aria-hidden', 'false');
+      if (aiChatInput) aiChatInput.focus();
+    }
+  }
+
+  if (aiChatFab) {
+    aiChatFab.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleAiChat();
+    });
+  }
+
+  if (aiChatCloseBtn) {
+    aiChatCloseBtn.addEventListener('click', () => {
+      if (aiChatWindow) {
+        aiChatWindow.classList.remove('is-active');
+        aiChatWindow.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  function appendAiMessage(sender, text) {
+    if (!aiChatMessages) return;
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `ai-msg ai-msg-${sender}`;
+
+    const bubble = document.createElement('div');
+    bubble.className = 'ai-msg-bubble';
+    bubble.innerHTML = text;
+
+    const time = document.createElement('span');
+    time.className = 'ai-msg-time';
+    time.textContent = 'Just now';
+
+    msgDiv.appendChild(bubble);
+    msgDiv.appendChild(time);
+    aiChatMessages.appendChild(msgDiv);
+
+    const chatBody = document.getElementById('aiChatBody');
+    if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function getAiResponse(userText) {
+    const text = userText.toLowerCase();
+    if (text.includes('book') || text.includes('appointment')) {
+      const contactSec = document.getElementById('contact');
+      if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
+      return "📅 I've scrolled down to our <strong>Appointment Booking Form</strong> for you. You can pick your department, doctor, and date right away!";
+    }
+    if (text.includes('doctor') || text.includes('specialist')) {
+      const docSec = document.getElementById('doctors');
+      if (docSec) docSec.scrollIntoView({ behavior: 'smooth' });
+      return "👨‍⚕️ We have 6 renowned specialists including <strong>Dr. Aanya Kapoor</strong> (Cardiology) and <strong>Dr. Rohan Mehta</strong> (Dermatology). Scrolled to doctors!";
+    }
+    if (text.includes('timing') || text.includes('hour') || text.includes('location')) {
+      return "🕒 <strong>Meridian Clinic Hours:</strong><br>Mon – Sat: 08:30 AM – 08:00 PM<br>Sun: 09:00 AM – 02:00 PM<br>📍 Location: Vasant Vihar, New Delhi.";
+    }
+    if (text.includes('portal') || text.includes('login') || text.includes('doctor portal')) {
+      return "🔐 <strong>Doctor Portal Access:</strong> Click the 'Doctor Portal' button in the navbar. Authorized doctors can log in to manage live appointment schedules.";
+    }
+    return "Thank you for reaching out to Meridian Clinic AI! How else can I assist you with your health or consultation booking today?";
+  }
+
+  if (aiChatForm) {
+    aiChatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = aiChatInput.value.trim();
+      if (!val) return;
+
+      appendAiMessage('user', val);
+      aiChatInput.value = '';
+
+      setTimeout(() => {
+        const reply = getAiResponse(val);
+        appendAiMessage('bot', reply);
+      }, 500);
+    });
+  }
+
+  if (aiChatChips) {
+    aiChatChips.querySelectorAll('.ai-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const q = chip.getAttribute('data-query') || chip.textContent;
+        appendAiMessage('user', q);
+        setTimeout(() => {
+          const reply = getAiResponse(q);
+          appendAiMessage('bot', reply);
+        }, 400);
+      });
+    });
+  }
+
 });
+
 
 
 
