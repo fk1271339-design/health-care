@@ -4343,17 +4343,20 @@ section {
     font-size: 0.65rem !important;
   }
 
-  /* 8. Services / Treatments - Horizontal Scroll Pills & 2-Col Cards */
+  /* 8. Services / Treatments - Crystal Clear Mobile Cards */
   .services-layout {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
+  }
+  .services-intro {
+    position: static !important;
   }
   .service-filters, .doctor-filters {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    padding-bottom: 6px !important;
-    gap: 6px !important;
+    padding: 4px 2px 8px !important;
+    gap: 8px !important;
     scrollbar-width: none !important;
   }
   .service-filters::-webkit-scrollbar,
@@ -4362,112 +4365,150 @@ section {
   }
   .filter-btn {
     flex: 0 0 auto !important;
-    padding: 5px 12px !important;
-    font-size: 0.74rem !important;
+    padding: 7px 15px !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
     border-radius: 20px !important;
     white-space: nowrap !important;
+    border: 1px solid rgba(90, 184, 152, 0.25) !important;
+    background: rgba(18, 30, 48, 0.8) !important;
+    color: var(--ivory-dim) !important;
+  }
+  .filter-btn.is-active {
+    background: var(--teal) !important;
+    color: #0a0f1a !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(90, 184, 152, 0.35) !important;
   }
 
   .service-list {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
   }
   .service-row {
-    grid-template-columns: 1fr !important;
-    padding: 12px 10px !important;
-    border: 1px solid rgba(90, 184, 152, 0.15) !important;
-    border-radius: 12px !important;
-    background: rgba(18, 30, 48, 0.6) !important;
-    gap: 6px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 16px 14px !important;
+    border: 1px solid rgba(90, 184, 152, 0.2) !important;
+    border-radius: 14px !important;
+    background: rgba(18, 30, 48, 0.85) !important;
+    gap: 10px !important;
   }
   .service-icon {
-    width: 28px !important;
-    height: 28px !important;
-    border-radius: 6px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+    background: rgba(90, 184, 152, 0.15) !important;
+    border: 1px solid rgba(90, 184, 152, 0.3) !important;
   }
   .service-icon svg {
-    width: 15px !important;
-    height: 15px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
   .service-body h3 {
-    font-size: 0.88rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: var(--ivory) !important;
   }
   .service-body p {
-    font-size: 0.74rem !important;
-    line-height: 1.35 !important;
-    margin-top: 2px !important;
+    font-size: 0.86rem !important;
+    line-height: 1.5 !important;
+    color: #94a3b8 !important;
+    margin-top: 4px !important;
   }
   .service-meta {
-    grid-column: 1 !important;
+    display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    margin-top: 4px !important;
-    padding-top: 4px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    margin-top: 6px !important;
+    padding-top: 8px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
   .service-tag {
-    font-size: 0.65rem !important;
-    padding: 2px 6px !important;
+    font-size: 0.72rem !important;
+    padding: 3px 10px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(90, 184, 152, 0.25) !important;
+    color: var(--teal) !important;
+  }
+  .quick-book-service {
+    font-size: 0.84rem !important;
+    font-weight: 700 !important;
+    color: var(--teal) !important;
   }
 
-  /* 9. Doctor Grid - 2 Columns on Phone with Smaller Focused Photos */
+  /* 9. Doctors / Specialists - Crystal Clear High-Definition Cards */
   .doctors-head {
-    margin-bottom: 16px !important;
-    gap: 10px !important;
+    margin-bottom: 20px !important;
+    gap: 12px !important;
   }
   .doctor-grid {
+    display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
+    gap: 10px !important;
   }
   .doctor-card {
-    border-radius: 12px !important;
-    background: rgba(26, 41, 64, 0.7) !important;
-    border: 1px solid rgba(90, 184, 152, 0.15) !important;
+    border-radius: 14px !important;
+    background: rgba(18, 30, 48, 0.9) !important;
+    border: 1px solid rgba(90, 184, 152, 0.2) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+    overflow: hidden !important;
   }
   .doctor-photo {
-    aspect-ratio: 1/1 !important;
-    max-height: 125px !important; /* Sleek compact doctor portrait */
+    aspect-ratio: 4/3 !important;
+    height: 150px !important;
+    max-height: none !important; /* Remove max-height squishing */
     background: #141f30 !important;
   }
   .doctor-photo img {
     object-fit: cover !important;
-    object-position: top center !important; /* Perfect doctor face alignment */
+    object-position: top center !important; /* Keep doctor face perfectly centered */
   }
   .doctor-avail {
     top: 6px !important;
     left: 6px !important;
-    padding: 2px 6px !important;
-    font-size: 0.62rem !important;
-    border-radius: 10px !important;
+    padding: 3px 8px !important;
+    font-size: 0.65rem !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    background: rgba(10, 16, 26, 0.9) !important;
   }
   .doctor-avail .dot {
-    width: 4px !important;
-    height: 4px !important;
+    width: 5px !important;
+    height: 5px !important;
   }
   .doctor-info {
-    padding: 8px 8px 10px !important;
+    padding: 10px 10px 12px !important;
   }
   .doctor-info h3 {
-    font-size: 0.84rem !important;
-    line-height: 1.15 !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    color: var(--ivory) !important;
+    line-height: 1.2 !important;
   }
   .doctor-spec {
-    font-size: 0.72rem !important;
-    margin-top: 1px !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: var(--teal) !important;
+    margin-top: 2px !important;
   }
   .doctor-meta {
-    font-size: 0.68rem !important;
-    margin-top: 4px !important;
-    gap: 1px !important;
+    font-size: 0.72rem !important;
+    color: #94a3b8 !important;
+    margin-top: 6px !important;
+    gap: 2px !important;
   }
   .doctor-card-footer {
-    margin-top: 6px !important;
+    margin-top: 8px !important;
     padding-top: 6px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
   .view-profile-btn {
-    font-size: 0.72rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    color: var(--teal) !important;
   }
 
   /* 10. Facilities Gallery - 3 Columns Compact Grid */
