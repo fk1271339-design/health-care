@@ -1630,78 +1630,71 @@
     </div>
   </div>
 
-  <!-- UNIFIED FLOATING ACTIONS DOCK (AI ASSISTANT + 24/7 CALL + WHATSAPP) -->
-  <div class="floating-dock-container" id="floatingDock">
-    <!-- 1. AI CHATBOT WIDGET -->
-    <div class="ai-chatbot-widget" id="aiChatWidget">
-      <!-- Floating Chat Trigger Button -->
-      <button type="button" class="ai-chat-fab" id="aiChatFab" aria-label="Open AI Health Assistant" title="Meridian AI Health Assistant">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span class="float-btn-label">AI Health</span>
-        <span class="ai-fab-ping"></span>
-      </button>
-
-      <!-- Chatbot Window -->
-      <div class="ai-chat-window" id="aiChatWindow" aria-hidden="true">
-        <div class="ai-chat-header">
-          <div class="ai-bot-info">
-            <div class="ai-bot-avatar">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="4" y="8" width="16" height="12" rx="4"/><path d="M9 13h.01M15 13h.01"/><path d="M10 17h4"/></svg>
-              <span class="online-dot"></span>
-            </div>
-            <div>
-              <h4>Meridian Health AI</h4>
-              <p>Virtual Medical &amp; Booking Assistant</p>
-            </div>
-          </div>
-          <div class="ai-chat-controls">
-            <button type="button" class="ai-chat-close" id="aiChatCloseBtn" aria-label="Close Chat">&times;</button>
-          </div>
+  <!-- AI CHAT WINDOW (at body level to avoid pointer-events inheritance) -->
+  <div class="ai-chat-window" id="aiChatWindow" aria-hidden="true">
+    <div class="ai-chat-header">
+      <div class="ai-bot-info">
+        <div class="ai-bot-avatar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="4" y="8" width="16" height="12" rx="4"/><path d="M9 13h.01M15 13h.01"/><path d="M10 17h4"/></svg>
+          <span class="online-dot"></span>
         </div>
-
-        <div class="ai-chat-body" id="aiChatBody">
-          <div class="ai-chat-messages" id="aiChatMessages">
-            <!-- Initial bot greeting -->
-            <div class="ai-msg ai-msg-bot">
-              <div class="ai-msg-bubble">
-                👋 <strong>Hello! I'm Meridian AI Assistant.</strong><br>
-                How can I help you today? Ask about doctors, booking, clinic hours, or doctor portal access.
-              </div>
-              <span class="ai-msg-time">Just now</span>
-            </div>
-
-            <!-- Quick suggestion chips -->
-            <div class="ai-chat-chips" id="aiChatChips">
-              <button type="button" class="ai-chip" data-query="Book an appointment">📅 Book Appointment</button>
-              <button type="button" class="ai-chip" data-query="List of doctors">👨‍⚕️ Specialist Doctors</button>
-              <button type="button" class="ai-chip" data-query="Clinic timings and location">🕒 Timings &amp; Map</button>
-              <button type="button" class="ai-chip" data-query="Doctor portal login help">🔐 Doctor Portal Info</button>
-            </div>
-          </div>
+        <div>
+          <h4>Meridian Health AI</h4>
+          <p>Virtual Medical &amp; Booking Assistant</p>
         </div>
-
-        <form id="aiChatForm" class="ai-chat-footer">
-          <input type="text" id="aiChatInput" placeholder="Type your question..." autocomplete="off" required>
-          <button type="submit" class="ai-send-btn" id="aiSendBtn" aria-label="Send message">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
-        </form>
+      </div>
+      <div class="ai-chat-controls">
+        <button type="button" class="ai-chat-close" id="aiChatCloseBtn" aria-label="Close Chat">&times;</button>
       </div>
     </div>
 
-    <!-- 2. CALL & WHATSAPP BUTTONS -->
-    <div class="emergency-float-widget" id="emergencyFloatWidget">
-      <a href="tel:+911149827000" class="emergency-float-btn phone" title="Call 24/7 Hotline">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span class="float-btn-label">24/7 Call</span>
-      </a>
-      <a href="https://wa.me/919811092831?text=Hello%20Meridian%20Clinic,%20I%20want%20to%20inquire%20about%20an%20appointment." target="_blank" rel="noopener" class="emergency-float-btn whatsapp" title="Chat on WhatsApp">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-        <span class="float-btn-label">WhatsApp</span>
-      </a>
+    <div class="ai-chat-body" id="aiChatBody">
+      <div class="ai-chat-messages" id="aiChatMessages">
+        <div class="ai-msg ai-msg-bot">
+          <div class="ai-msg-bubble">
+            👋 <strong>Hello! I'm Meridian AI Assistant.</strong><br>
+            How can I help? Ask about doctors, booking, clinic hours, or doctor portal.
+          </div>
+          <span class="ai-msg-time">Just now</span>
+        </div>
+        <div class="ai-chat-chips" id="aiChatChips">
+          <button type="button" class="ai-chip" data-query="Book an appointment">📅 Book Appointment</button>
+          <button type="button" class="ai-chip" data-query="List of doctors">👨‍⚕️ Specialist Doctors</button>
+          <button type="button" class="ai-chip" data-query="Clinic timings and location">🕒 Timings &amp; Map</button>
+          <button type="button" class="ai-chip" data-query="Doctor portal login help">🔐 Doctor Portal</button>
+        </div>
+      </div>
     </div>
+
+    <form id="aiChatForm" class="ai-chat-footer">
+      <input type="text" id="aiChatInput" placeholder="Type your question..." autocomplete="off" required>
+      <button type="submit" class="ai-send-btn" id="aiSendBtn" aria-label="Send message">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- UNIFIED FLOATING ACTIONS DOCK (AI ASSISTANT + 24/7 CALL + WHATSAPP) -->
+  <div class="floating-dock-container" id="floatingDock">
+    <!-- 1. AI CHATBOT FAB TRIGGER -->
+    <button type="button" class="ai-chat-fab" id="aiChatFab" aria-label="Open AI Health Assistant" title="Meridian AI Health Assistant">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="float-btn-label">AI Health</span>
+      <span class="ai-fab-ping"></span>
+    </button>
+
+    <!-- 2. CALL & WHATSAPP BUTTONS -->
+    <a href="tel:+911149827000" class="emergency-float-btn phone" title="Call 24/7 Hotline">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="float-btn-label">24/7 Call</span>
+    </a>
+    <a href="https://wa.me/919811092831?text=Hello%20Meridian%20Clinic,%20I%20want%20to%20inquire%20about%20an%20appointment." target="_blank" rel="noopener" class="emergency-float-btn whatsapp" title="Chat on WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+      <span class="float-btn-label">WhatsApp</span>
+    </a>
   </div>
 
   <script src="app.js"></script>
 </body>
 </html>
+
